@@ -31,19 +31,18 @@ namespace SinjulMSBH_Blog
 			    .AddEntityFrameworkStores<ApplicationDbContext>( )
 			    .AddDefaultTokenProviders( );
 
+			services.AddAntiforgery( opts => opts.HeaderName = "XSRF-TOKEN" );
+
+			services.AddMvc( );
+			services.AddResponseCompression( );
+
 			services.AddAuthentication( )
 				.AddGoogle( options =>
 				{
 					options.ClientId = Configuration[ "GoogleClientId" ] ?? "MissingClientId";
 					options.ClientSecret = Configuration[ "GoogleClientSecret" ] ?? "MissingClientSecret";
-					options.SaveTokens = true; // So we get the access token and can use it later to retrieve the user    	profile	including its picture
-									   //options.CallbackPath = "/signin-google" DEFAULT VALUE
+					options.SaveTokens = true;
 				} );
-
-			services.AddAntiforgery( opts => opts.HeaderName = "XSRF-TOKEN" );
-
-			services.AddMvc( );
-			services.AddResponseCompression( );
 
 			//Needed for accessing action context in the tag helpers
 			services.TryAddSingleton<IActionContextAccessor , ActionContextAccessor>( );

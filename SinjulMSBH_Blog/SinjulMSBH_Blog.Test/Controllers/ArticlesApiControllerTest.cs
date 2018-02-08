@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BlogPlayground.Test
+namespace SinjulMSBH_Blog.Test.Test
 {
 	public class ArticlesApiControllerTest
 	{
