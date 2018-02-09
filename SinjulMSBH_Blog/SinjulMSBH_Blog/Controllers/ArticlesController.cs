@@ -18,10 +18,24 @@ namespace SinjulMSBH_Blog.Controllers
 		private readonly IArticlesRepository _articlesRepository;
 		private readonly IRequestUserProvider _requestUserProvider;
 
+		public ArticlesController ( )
+		{
+		}
+
 		public ArticlesController ( IArticlesRepository articlesRepository , IRequestUserProvider requestUserProvider )
 		{
 			_articlesRepository = articlesRepository;
 			_requestUserProvider = requestUserProvider;
+		}
+
+		// GET: /<controller>/
+		public IActionResult List ( )
+		{
+			var hello = new Hello("Sinjul", "MSBH");
+			Console.WriteLine( hello.HelloMan( ) );
+			Console.ReadLine( );
+
+			return View( "Index" );
 		}
 
 		// GET: Articles

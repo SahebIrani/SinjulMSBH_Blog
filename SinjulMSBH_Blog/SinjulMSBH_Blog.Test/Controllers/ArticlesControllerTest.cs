@@ -1,14 +1,16 @@
 using System;
-using Xunit;
-using Moq;
-using SinjulMSBH_Blog.Data;
-using SinjulMSBH_Blog.Services;
-using SinjulMSBH_Blog.Controllers;
 using System.Collections.Generic;
-using SinjulMSBH_Blog.Models;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
+using FluentAssertions;
+using FluentAssertions.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using SinjulMSBH_Blog.Controllers;
+using SinjulMSBH_Blog.Data;
+using SinjulMSBH_Blog.Models;
+using SinjulMSBH_Blog.Services;
+using Xunit;
 
 namespace SinjulMSBH_Blog.Test.Test
 {
@@ -24,6 +26,15 @@ namespace SinjulMSBH_Blog.Test.Test
 			requestUserProviderMock = new Mock<IRequestUserProvider>( );
 			controller = new ArticlesController( articlesRepoMock.Object , requestUserProviderMock.Object );
 		}
+
+		//[Fact]
+		//public void List_ShouldReturnView ( )
+		//{
+		//	var controller = new ArticlesController();
+		//	controller.List( ).Should( )
+		//	    .BeViewResult( )
+		//	    .WithViewName( "Index" );
+		//}
 
 		[Fact]
 		public async Task IndexTest_ReturnsViewWithArticlesList ( )
